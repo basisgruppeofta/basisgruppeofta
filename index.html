@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Studerendes Oftalmologiske Selskab (SOS) – Fremtidens Øjenlæger</title>
+  <meta name="description" content="SOS er en basisgruppe ved Københavns Universitet, der fremmer viden om oftalmologi med foredrag, workshops og netværk for medicinstuderende." />
+
+  <!-- (5) Favicon -->
+  <link rel="icon" type="image/png" href="faviconsos.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- (1) SEO/Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:title" content="Studerendes Oftalmologiske Selskab (SOS)">
+  <meta property="og:description" content="Foredrag, workshops og netværk for medicinstuderende ved Københavns Universitet.">
+  <meta property="og:image" content="hero-eye.jpg">
+  <meta property="og:url" content="/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Studerendes Oftalmologiske Selskab (SOS)">
+  <meta name="twitter:description" content="Foredrag, workshops og netværk for medicinstuderende ved KU.">
+  <meta name="twitter:image" content="hero-eye.jpg">
+
+  <style>
+    :root {
+      --bg: #f6f9fc; --bg-soft: #eef5fb; --text: #0f172a; --muted: #475569;
+      --brand: #0b4a7f; --brand-2: #0f66a5; --accent: #ffd166; --card: #ffffff;
+      --radius: 16px; --shadow-md: 0 8px 24px rgba(2,6,23,.08); --shadow-lg: 0 18px 40px rgba(2,6,23,.12);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: radial-gradient(1200px 800px at 15% -10%, var(--bg-soft), transparent 60%),
+                  radial-gradient(1400px 900px at 110% 10%, #dbeafe55, transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); font-weight: 700; }
+    .nav-list { display: flex; gap: 24px; }
+    .nav-link { text-decoration: none; color: var(--text); font-weight: 600; padding: 8px 10px; border-radius: 10px; }
+    .nav-link:hover { background: rgba(11,74,127,0.1); }
+
+    /* Logo */
+    .logo-img { height: 36px; width: auto; display: block; object-fit: contain; border-radius: 8px; margin-top: -2px; }
+
+    /* Hero */
+    .hero { padding: 90px 20px 60px; text-align: left; }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr .9fr;
+      gap: 48px; align-items: center;
+    }
+    .kicker { color: var(--brand-2); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; }
+    .headline { font-weight: 800; font-size: clamp(32px,4.4vw,54px); line-height: 1.1; margin: 10px 0 16px; }
+    .lede { color: var(--muted); max-width: 60ch; }
+    .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 999px;
+      font-weight: 700; box-shadow: var(--shadow-md); transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .btn:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--brand-2); border: 1px solid var(--brand-2); }
+
+    .hero-art { border-radius: var(--radius); overflow: hidden; height: 100%; box-shadow: var(--shadow-md); }
+    .hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    section { padding: clamp(48px,9vw,96px) 20px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: clamp(26px,3.2vw,40px); font-weight: 800; margin: 0 0 12px; }
+    .section-lede { text-align: center; color: var(--muted); max-width: 70ch; margin: 0 auto; }
+
+    .panel {
+      background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md);
+      padding: clamp(20px,3.6vw,28px); border: 1px solid #e2e8f0; max-width: 900px; margin: 24px auto 0;
+    }
+
+    /* Facebook embed */
+    .fb-wrap { max-width: 1300px; margin: 0 auto; padding: 2rem 1rem; }
+    .fb-card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; }
+    .fb-container { max-width: 500px; margin: 0 auto; }
+    .fb-page { border-radius: 12px; overflow: hidden; }
+
+    .footer {
+      border-top: 1px solid #e2e8f0; text-align: center; color: var(--muted);
+      padding: 28px 20px; background: rgba(255,255,255,0.7);
+    }
+
+    /* (2) Mobil-forbedringer */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-art { margin-top: 24px; height: 260px; }
+      .logo-img { height: 30px; margin-top: 0; }
+      .nav { padding: 12px 16px; }
+      .headline { font-size: clamp(28px, 7vw, 40px); }
+      .fb-container { max-width: 100%; }
+      .fb-page { border-radius: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Primær navigation">
+      <a class="brand" href="#">
+        <img src="sos-logo.jpg" alt="Studerendes Oftalmologiske Selskab logo" class="logo-img">
+        <span>SOS · Fremtidens Øjenlæger</span>
+      </a>
+      <div class="nav-list">
+        <a class="nav-link" href="#om-os">Om SOS</a>
+        <a class="nav-link" href="#facebook">Facebook</a>
+        <a class="nav-link" href="#sponsorater">Sponsorater</a>
+        <a class="nav-link" href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="kicker">Studerendes Oftalmologiske Selskab</div>
+        <h1 class="headline">Oplev oftalmologi i praksis med foredrag, workshops og et stærkt netværk</h1>
+        <p class="lede">SOS er en basisgruppe ved Københavns Universitet, der uddanner og forbinder medicinstuderende med faget øjensygdomme. Vi arrangerer praksisnære aktiviteter i samarbejde med erfarne speciallæger.</p>
+        <div class="cta-row">
+          <a class="btn" href="#facebook">Se vores Facebook</a>
+          <a class="btn btn-ghost" href="#kontakt">Kontakt os</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="hero-eye.jpg" alt="Illustration af oftalmologisk arbejde">
+      </div>
+    </div>
+  </section>
+
+  <section id="om-os">
+    <div class="wrap">
+      <h2 class="section-title">Om Studerendes Oftalmologiske Selskab</h2>
+      <p class="section-lede">
+        SOS er en studenterforening ved Københavns Universitet for medicinstuderende med interesse for øjenfaget. Vi arbejder for at gøre oftalmologi spændende og tilgængeligt gennem praksis, viden og fællesskab.
+        Vi arrangerer foredrag, workshops og besøg på øjenafdelinger, hvor du kan prøve kræfter med undersøgelser, høre fra erfarne øjenlæger og få indblik i hverdagen som specialist.
+        SOS er både for dig, der allerede drømmer om at blive øjenlæge, og for dig, der bare vil lære mere om syn, øjet og sygdomme i det.
+        Her møder du andre nysgerrige studerende, får ny viden og oplever, hvordan teori bliver til praksis.
+        Sammen arbejder vi for at skabe fremtidens øjenlæger.
+      </p>
+    </div>
+  </section>
+
+  <!-- Facebook (placeret efter Om SOS) -->
+  <section id="facebook" class="fb-wrap">
+    <div class="wrap">
+      <h2 class="section-title">Find alle events på Facebook</h2>
+      <p class="section-lede">Vi opdaterer løbende vores Facebook-side med nye arrangementer og billeder.</p>
+
+      <div class="fb-card">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous"
+          src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v20.0"
+          nonce="sos-page-plugin"></script>
+
+        <div class="fb-container">
+          <div class="fb-page"
+               data-href="https://www.facebook.com/StuderendesOftalmologiskeSelskab/"
+               data-tabs="timeline,events"
+               data-width="500"
+               data-adapt-container-width="false"
+               data-small-header="false"
+               data-hide-cover="false"
+               data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/StuderendesOftalmologiskeSelskab/" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/StuderendesOftalmologiskeSelskab/">Studerendes Oftalmologiske Selskab</a>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsorater">
+    <div class="wrap">
+      <h2 class="section-title">Bliv sponsor</h2>
+      <div class="panel">
+        Støt fremtidens øjenlæger og få synlighed blandt studerende. Kontakt os for muligheder om partnerskab, materialestøtte og eventsamarbejder.
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="panel" style="display:grid;gap:8px;">
+        <div><strong>Email:</strong> <a href="mailto:info@sos.dk">info@sos.dk</a></div>
+        <div><strong>Telefon:</strong> <a href="tel:+4512345678">+45 12 34 56 78</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer">© 2025 SOS – Alle rettigheder forbeholdes.</div>
+  </footer>
+</body>
+</html>

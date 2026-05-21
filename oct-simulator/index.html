@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Basisgruppe - OCT Træning</title>
+    <style>
+        /* Moderniseret, rent design der passer til en professionel forening */
+        :root {
+            --primary: #1e3a8a; /* Dyb blå */
+            --secondary: #3b82f6; /* Lys blå */
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #334155;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .header-area {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h2 { margin: 0; color: var(--primary); }
+        .subtitle { font-size: 0.9em; color: #64748b; margin-top: 5px; }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #f1f5f9;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #oct-image {
+            max-width: 100%;
+            max-height: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Overlay til at highlighte patologi senere */
+        .pathology-overlay {
+            position: absolute;
+            display: none;
+            border: 3px solid #fbbf24;
+            border-radius: 50%;
+            background: rgba(251, 191, 36, 0.2);
+            pointer-events: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-diagnose {
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            background-color: white;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-diagnose:hover:not(:disabled) {
+            border-color: var(--secondary);
+            background-color: #eff6ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-diagnose:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Farver når man har svaret */
+        .btn-diagnose.correct { background-color: var(--success); color: white; border-color: var(--success); }
+        .btn-diagnose.wrong { background-color: var(--danger); color: white; border-color: var(--danger); }
+        .btn-diagnose.missed { border-color: var(--success); background-color: #d1fae5; }
+
+        .feedback-panel {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8fafc;
+            display: none;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .feedback-text { font-weight: 500; margin-bottom: 10px; }
+        
+        .btn-next {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-next:hover { background: #1e40af; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header-area">
+            <h2>OCT Simulator</h2>
+            <div class="subtitle">Officielt træningsværktøj for SOS Basisgruppe</div>
+        </div>
+
+        <div class="stats-bar">
+            <span>Diagnoser: <span id="score-display">0</span></span>
+            <span>Nuværende Streak: <span id="streak-display">0</span> 🔥</span>
+        </div>
+
+        <div class="image-wrapper" id="image-container">
+            <img id="oct-image" src="" alt="Indlæser OCT scan...">
+            <div id="overlay" class="pathology-overlay"></div>
+        </div>
+
+        <div class="button-grid" id="button-grid">
+            <button class="btn-diagnose" data-diag="NORMAL">Normal</button>
+            <button class="btn-diagnose" data-diag="CNV">CNV (Våd AMD)</button>
+            <button class="btn-diagnose" data-diag="DME">Diabetisk Makulaødem</button>
+            <button class="btn-diagnose" data-diag="DRUSEN">Druser</button>
+        </div>
+
+        <div class="feedback-panel" id="feedback-panel">
+            <div class="feedback-text" id="feedback-text"></div>
+            <button class="btn-next" id="btn-next" onclick="loadNextImage()">Næste Scan ➔</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

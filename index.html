@@ -3,125 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Studerendes Oftalmologiske Selskab (SOS) – Fremtidens Øjenlæger</title>
+  <title>Studerendes Oftalmologiske Selskab (SOS) – Fremtidens øjenlæger</title>
   <meta name="description" content="SOS er en basisgruppe ved Københavns Universitet, der fremmer viden om oftalmologi med foredrag, workshops og netværk for medicinstuderende." />
-
   <link rel="icon" type="image/png" href="faviconsos.png" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="css/sos.css" />
   <meta property="og:type" content="website">
   <meta property="og:locale" content="da_DK">
   <meta property="og:title" content="Studerendes Oftalmologiske Selskab (SOS)">
   <meta property="og:description" content="Foredrag, workshops og netværk for medicinstuderende ved Københavns Universitet.">
   <meta property="og:image" content="hero-eye.jpg">
-  <meta property="og:url" content="/">
-
-  <style>
-    :root {
-      --bg: #f6f9fc; --bg-soft: #eef5fb; --text: #0f172a; --muted: #475569;
-      --brand: #0b4a7f; --brand-2: #0f66a5; --accent: #ffd166; --card: #ffffff;
-      --radius: 16px; --shadow-md: 0 8px 24px rgba(2,6,23,.08); --shadow-lg: 0 18px 40px rgba(2,6,23,.12);
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: radial-gradient(1200px 800px at 15% -10%, var(--bg-soft), transparent 60%),
-                  radial-gradient(1400px 900px at 110% 10%, #dbeafe55, transparent 50%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    /* Topbar */
-    .topbar {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .nav {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 20px;
-    }
-    .nav-list { display: flex; gap: 24px; }
-    .nav-link { text-decoration: none; color: var(--text); font-weight: 600; padding: 8px 10px; border-radius: 10px; }
-    .nav-link:hover { background: rgba(11,74,127,0.1); }
-
-    /* Logo i header - Kun billede, gjort større */
-    .logo-link { display: block; line-height: 0; }
-    .logo-img { height: 75px; width: auto; display: block; object-fit: contain; }
-
-    /* Hero */
-    .hero { padding: 90px 20px 60px; text-align: left; }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr .9fr;
-      gap: 48px; align-items: center;
-    }
-    .kicker { color: var(--brand-2); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; }
-    .headline { font-weight: 800; font-size: clamp(32px,4.4vw,54px); line-height: 1.1; margin: 10px 0 16px; }
-    .lede { color: var(--muted); max-width: 60ch; }
-    .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-    .btn {
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 999px;
-      font-weight: 700; box-shadow: var(--shadow-md); transition: transform .15s ease, box-shadow .2s ease;
-    }
-    .btn:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
-    .btn-ghost { background: transparent; color: var(--brand-2); border: 1px solid var(--brand-2); }
-
-    .hero-art { border-radius: var(--radius); overflow: hidden; height: 100%; box-shadow: var(--shadow-md); }
-    .hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    section { padding: clamp(48px,9vw,96px) 20px; }
-    .wrap { max-width: 1200px; margin: 0 auto; }
-    .section-title { text-align: center; font-size: clamp(26px,3.2vw,40px); font-weight: 800; margin: 0 0 12px; }
-    .section-lede { text-align: center; color: var(--muted); max-width: 70ch; margin: 0 auto; }
-
-    .panel {
-      background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md);
-      padding: clamp(20px,3.6vw,28px); border: 1px solid #e2e8f0; max-width: 900px; margin: 24px auto 0;
-    }
-
-    /* Facebook embed */
-    .fb-wrap { max-width: 1300px; margin: 0 auto; padding: 2rem 1rem; }
-    .fb-card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; }
-    .fb-container { max-width: 500px; margin: 0 auto; }
-    .fb-page { border-radius: 12px; overflow: hidden; }
-
-    .footer {
-      border-top: 1px solid #e2e8f0; text-align: center; color: var(--muted);
-      padding: 50px 20px; background: rgba(255,255,255,0.7);
-    }
-    
-    /* KU Logo styling fjernet herfra */
-
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-art { margin-top: 24px; height: 260px; }
-      .logo-img { height: 50px; }
-      .nav { padding: 12px 16px; }
-      .headline { font-size: clamp(28px, 7vw, 40px); }
-      .fb-container { max-width: 100%; }
-      .fb-page { border-radius: 10px; }
-    }
-  </style>
+  <meta property="og:url" content="https://sosbasisgruppe.dk/">
 </head>
-
 <body>
+  <a class="skip-link" href="#indhold">Spring til indhold</a>
   <header class="topbar">
     <nav class="nav" aria-label="Primær navigation">
-      <a href="#" class="logo-link">
-        <img src="sos-logo.jpg" alt="Studerendes Oftalmologiske Selskab" class="logo-img">
+      <a href="index.html" class="logo-link">
+        <img src="sos-logo.jpg" alt="Studerendes Oftalmologiske Selskab" class="logo-img" width="180" height="72">
       </a>
-      
-      <div class="nav-list">
-        <a class="nav-link" href="/oct-simulator/">OCT Simulator</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      <div class="nav-list" id="nav-list">
+        <a class="nav-link" href="oct-simulator/">OCT-simulator</a>
+        <a class="nav-link" href="fund-simulator/">Fundus-simulator</a>
         <a class="nav-link" href="#om-os">Om SOS</a>
         <a class="nav-link" href="#team">Bestyrelsen</a>
         <a class="nav-link" href="#facebook">Facebook</a>
@@ -131,72 +36,87 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="kicker">Studerendes Oftalmologiske Selskab</div>
-        <h1 class="headline">Oplev oftalmologi i praksis med foredrag, workshops og et stærkt netværk</h1>
-        <p class="lede">SOS er en basisgruppe ved Københavns Universitet, der uddanner og forbinder medicinstuderende med faget øjensygdomme. Vi arrangerer praksisnære aktiviteter i samarbejde med erfarne speciallæger.</p>
-        <div class="cta-row">
-          <a class="btn" href="/oct-simulator/">Prøv OCT Simulatoren</a>
-          <a class="btn btn-ghost" href="#facebook">Se vores Facebook</a>
-        </div>
-      </div>
-      <div class="hero-art">
-        <img src="hero-eye.jpg" alt="Illustration af oftalmologisk arbejde">
-      </div>
-    </div>
-  </section>
-
-  <section id="om-os">
-    <div class="wrap">
-      <h2 class="section-title">Om Studerendes Oftalmologiske Selskab</h2>
-      <p class="section-lede">
-        SOS er en studenterforening ved Københavns Universitet for medicinstuderende med interesse for øjenfaget. Vi arbejder for at gøre oftalmologi spændende og tilgængeligt gennem praksis, viden og fællesskab.
-        Vi arrangerer foredrag, workshops og besøg på øjenafdelinger, hvor du kan prøve kræfter med undersøgelser, høre fra erfarne øjenlæger og få indblik i hverdagen som specialist.
-        SOS er både for dig, der allerede drømmer om at blive øjenlæge, og for dig, der bare vil lære mere om syn, øjet og sygdomme i det.
-      </p>
-    </div>
-  </section>
-
-  <section id="team" style="background: var(--bg-soft);">
-    <div class="wrap">
-      <h2 class="section-title">Mød bestyrelsen</h2>
-      <p class="section-lede">Vi arbejder dagligt for at skabe de bedste faglige arrangementer for dig.</p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 40px; text-align: center; justify-content: center;">
-        
+  <main id="indhold">
+    <section class="hero">
+      <div class="hero-inner">
         <div>
-          <h3 style="margin: 0; font-size: 1.2rem;">Katrine Mikha</h3>
-          <span style="color: var(--brand); font-size: 0.95rem; font-weight: 700;">Formand</span>
+          <div class="kicker">Studerendes Oftalmologiske Selskab</div>
+          <h1 class="headline">Oplev oftalmologi i praksis med foredrag, workshops og et stærkt netværk</h1>
+          <p class="lede">SOS er en basisgruppe ved Københavns Universitet, der uddanner og forbinder medicinstuderende med faget øjensygdomme. Vi arrangerer praksisnære aktiviteter i samarbejde med erfarne speciallæger.</p>
+          <div class="cta-row">
+            <a class="btn" href="oct-simulator/">Prøv OCT-simulatoren</a>
+            <a class="btn btn-ghost" href="fund-simulator/">Prøv fundus-simulatoren</a>
+          </div>
         </div>
-
-        <div>
-          <h3 style="margin: 0; font-size: 1.2rem;">Kira Scher</h3>
-          <span style="color: var(--brand); font-size: 0.95rem; font-weight: 700;">Næstformand</span>
+        <div class="hero-art">
+          <img src="hero-eye.jpg" alt="Nærbillede af et øje som illustration af oftalmologisk arbejde">
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="facebook" class="fb-wrap">
-    <div class="wrap">
-      <h2 class="section-title">Find alle events på Facebook</h2>
-      <p class="section-lede">Vi opdaterer løbende vores Facebook-side med nye arrangementer og billeder.</p>
+    <section id="vaerktojer">
+      <div class="wrap">
+        <h2 class="section-title">Værktøjer</h2>
+        <p class="section-lede">Træn øjets billeddiagnostik med to gratis simulatorer. Atlas-tilstand viser skematiske, mærkede scans. Test-tilstand lader dig stille diagnosen.</p>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">OCT</div>
+            <h3>OCT-simulator</h3>
+            <p>Lær makulære OCT B-scans at kende: normal fovea, druser, våd AMD, DME, maculahul og mere. Quizzen bruger rigtige OCT-optagelser.</p>
+            <a class="btn" href="oct-simulator/">Åbn OCT-simulator</a>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">FUN</div>
+            <h3>Fundus-simulator</h3>
+            <p>Skematisk fundusatlas med tør og våd AMD, diabetisk retinopati, papilødem, glaukom, karokklusioner og nethindeløsning – plus en quiz.</p>
+            <a class="btn" href="fund-simulator/">Åbn fundus-simulator</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <div class="fb-card">
+    <section id="om-os" class="band">
+      <div class="wrap">
+        <h2 class="section-title">Om Studerendes Oftalmologiske Selskab</h2>
+        <p class="section-lede">
+          SOS er en studenterforening ved Københavns Universitet for medicinstuderende med interesse for øjenfaget. Vi arbejder for at gøre oftalmologi spændende og tilgængeligt gennem praksis, viden og fællesskab.
+          Vi arrangerer foredrag, workshops og besøg på øjenafdelinger, hvor du kan prøve kræfter med undersøgelser, høre fra erfarne øjenlæger og få indblik i hverdagen som specialist.
+          SOS er både for dig, der allerede drømmer om at blive øjenlæge, og for dig, der bare vil lære mere om syn, øjet og sygdomme i det.
+        </p>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <h2 class="section-title">Mød bestyrelsen</h2>
+        <p class="section-lede">Vi arbejder for at skabe de bedste faglige arrangementer for dig.</p>
+        <div class="board-grid">
+          <article class="board-card">
+            <h3>Katrine Mikha</h3>
+            <div class="board-role">Formand</div>
+          </article>
+          <article class="board-card">
+            <h3>Kira Scher</h3>
+            <div class="board-role">Næstformand</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="facebook" class="fb-wrap band">
+      <div class="wrap">
+        <h2 class="section-title">Find alle events på Facebook</h2>
+        <p class="section-lede">Vi opdaterer løbende vores Facebook-side med nye arrangementer og billeder.</p>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous"
           src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v20.0"
           nonce="sos-page-plugin"></script>
-
         <div class="fb-container">
           <div class="fb-page"
                data-href="https://www.facebook.com/StuderendesOftalmologiskeSelskab/"
                data-tabs="timeline,events"
                data-width="500"
-               data-adapt-container-width="false"
+               data-adapt-container-width="true"
                data-small-header="false"
                data-hide-cover="false"
                data-show-facepile="true">
@@ -206,32 +126,35 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="sponsorater">
-    <div class="wrap">
-      <h2 class="section-title">Bliv sponsor</h2>
-      <div class="panel">
-        Støt fremtidens øjenlæger og få synlighed blandt studerende. Kontakt os for muligheder om partnerskab, materialestøtte og eventsamarbejder.
+    <section id="sponsorater">
+      <div class="wrap">
+        <h2 class="section-title">Bliv sponsor</h2>
+        <div class="panel">
+          Støt fremtidens øjenlæger og få synlighed blandt studerende. Kontakt os for muligheder om partnerskab, materialestøtte og eventsamarbejder.
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="kontakt">
-    <div class="wrap">
-      <h2 class="section-title">Kontakt</h2>
-      <div class="panel" style="display:grid;gap:8px;">
-        <div><strong>Email:</strong> <a href="mailto:basisgruppeofta@gmail.com">basisgruppeofta@gmail.com</a></div>
-        <div><strong>Telefon:</strong> <a href="tel:+4542201340">+45 42 20 13 40</a></div>
+    <section id="kontakt" class="band">
+      <div class="wrap">
+        <h2 class="section-title">Kontakt</h2>
+        <div class="panel contact-row">
+          <div><strong>Email:</strong> <a href="mailto:basisgruppeofta@gmail.com">basisgruppeofta@gmail.com</a></div>
+          <div><strong>Telefon:</strong> <a href="tel:+4542201340">+45 42 20 13 40</a></div>
+          <div><strong>Facebook:</strong> <a href="https://www.facebook.com/StuderendesOftalmologiskeSelskab/">Studerendes Oftalmologiske Selskab</a></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="footer">
-      <div>© 2025 SOS – Alle rettigheder forbeholdes.</div>
+      <div>© 2026 SOS – Studerendes Oftalmologiske Selskab. Alle rettigheder forbeholdes.</div>
+      <small>Uddannelsesmateriale. Simulatorernes skitser er originale undervisningsillustrationer og erstatter ikke klinisk billedmateriale.</small>
     </div>
   </footer>
+  <script src="js/nav.js"></script>
 </body>
 </html>

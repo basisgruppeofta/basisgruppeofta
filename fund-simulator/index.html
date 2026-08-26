@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OCT-simulator – SOS Basisgruppe</title>
-  <meta name="description" content="Skematisk OCT-atlas og quiz med rigtige makulascans til medicinstuderende i SOS." />
+  <title>Fundus-simulator – SOS Basisgruppe</title>
+  <meta name="description" content="Skematisk fundusatlas og quiz til medicinstuderende i Studerendes Oftalmologiske Selskab." />
   <link rel="icon" type="image/png" href="../faviconsos.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
       <div class="nav-list" id="nav-list">
-        <a class="nav-link is-active" href="./">OCT-simulator</a>
-        <a class="nav-link" href="../fund-simulator/">Fundus-simulator</a>
+        <a class="nav-link" href="../oct-simulator/">OCT-simulator</a>
+        <a class="nav-link is-active" href="./">Fundus-simulator</a>
         <a class="nav-link" href="../index.html#om-os">Om SOS</a>
         <a class="nav-link" href="../index.html#kontakt">Kontakt</a>
       </div>
@@ -31,8 +31,8 @@
     <div class="sim-wrap">
       <a class="sim-back" href="../index.html">← Tilbage til SOS</a>
       <header class="sim-header">
-        <h1>OCT-simulator</h1>
-        <p>Atlas med skematiske makula-B-scans og en quiz på rigtige OCT-optagelser. Officielt træningsværktøj for SOS.</p>
+        <h1>Fundus-simulator</h1>
+        <p>Lær klassiske fundusfund at kende på skematiske, mærkede illustrationer – og test dig selv bagefter.</p>
       </header>
 
       <div class="tabs" role="tablist" aria-label="Tilstand">
@@ -41,15 +41,15 @@
       </div>
 
       <section class="atlas-layout" id="panel-atlas" role="tabpanel" aria-labelledby="tab-atlas">
-        <div class="atlas-list" id="oct-atlas-list" role="listbox" aria-label="Diagnoser"></div>
+        <div class="atlas-list" id="fund-atlas-list" role="listbox" aria-label="Diagnoser"></div>
         <div>
           <div class="atlas-view">
             <div class="scan-frame">
-              <canvas id="oct-atlas-canvas" role="img" aria-label="Skematisk OCT B-scan"></canvas>
+              <canvas id="fund-atlas-canvas" role="img" aria-label="Skematisk fundus"></canvas>
             </div>
             <div class="teaching-note">
-              <h2 id="oct-atlas-title">Normal fovea</h2>
-              <p id="oct-atlas-note"></p>
+              <h2 id="fund-atlas-title">Normal fundus</h2>
+              <p id="fund-atlas-note"></p>
             </div>
           </div>
         </div>
@@ -59,26 +59,19 @@
         <div class="stats-bar">
           <span>Korrekte: <span id="score-display">0</span></span>
           <span>Streak: <span id="streak-display">0</span></span>
-          <span>Scan: <span id="progress-display">–</span></span>
+          <span>Tilfælde: <span id="progress-display">–</span></span>
         </div>
-        <div class="status-banner" id="oct-status" role="status"></div>
         <div class="quiz-card">
           <div class="atlas-view">
-            <div class="scan-frame" id="image-container">
-              <img id="oct-image" alt="OCT-scan af makula" />
-              <canvas id="oct-fallback" class="panel-hidden" role="img" aria-label="Skematisk OCT som erstatning for manglende scan"></canvas>
+            <div class="scan-frame">
+              <canvas id="fund-quiz-canvas" role="img" aria-label="Skematisk fundus til diagnose"></canvas>
             </div>
           </div>
-          <p class="sr-only" id="quiz-question">Hvilken diagnose passer bedst til dette OCT-scan?</p>
-          <div class="button-grid" id="button-grid" role="group" aria-labelledby="quiz-question">
-            <button class="btn-choice" type="button" data-diag="NORMAL">Normal <kbd>1</kbd></button>
-            <button class="btn-choice" type="button" data-diag="CNV">CNV (våd AMD) <kbd>2</kbd></button>
-            <button class="btn-choice" type="button" data-diag="DME">Diabetisk makulaødem <kbd>3</kbd></button>
-            <button class="btn-choice" type="button" data-diag="DRUSEN">Druser (tør AMD) <kbd>4</kbd></button>
-          </div>
+          <p class="sr-only" id="quiz-question">Hvilken diagnose passer bedst til dette fundusbillede?</p>
+          <div class="button-grid" id="button-grid" role="group" aria-labelledby="quiz-question"></div>
           <div class="feedback-panel" id="feedback-panel" role="status" aria-live="polite">
             <div class="feedback-text" id="feedback-text"></div>
-            <button class="btn" id="btn-next" type="button" style="margin-top:12px;width:100%;">Næste scan →</button>
+            <button class="btn" id="btn-next" type="button" style="margin-top:12px;width:100%;">Næste tilfælde →</button>
           </div>
         </div>
       </section>
@@ -88,11 +81,11 @@
   <footer>
     <div class="footer">
       <div>© 2026 SOS – Studerendes Oftalmologiske Selskab</div>
-      <small>Skitserne er originale undervisningsillustrationer. Quizzen bruger eksisterende OCT-optagelser fra foreningens materiale.</small>
+      <small>Alle fundusillustrationer er originale skitser til undervisning og ikke kliniske fotos.</small>
     </div>
   </footer>
   <script src="../js/nav.js"></script>
-  <script src="oct-draw.js"></script>
+  <script src="fund-draw.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
